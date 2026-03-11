@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nueve IPTV — IPTV Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;1,700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E8001C;
+    --red-dark: #b5001a;
+    --red-glow: rgba(232,0,28,0.25);
+    --bg: #f8f7f5;
+    --surface: #ffffff;
+    --surface2: #f0eeeb;
+    --text: #111111;
+    --muted: #777777;
+    --accent: #ff2233;
+    --border: rgba(0,0,0,0.09);
+  }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+background: var(–bg);
+color: var(–text);
+font-family: ‘DM Sans’, sans-serif;
+font-size: 16px;
+overflow-x: hidden;
+}
+
+/* ── HALFTONE TEXTURE ── */
+body::before {
+content: ‘’;
+position: fixed; inset: 0;
+background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
+background-size: 22px 22px;
+pointer-events: none; z-index: 0; opacity: 0.6;
+}
+
+/* ── NAV ── */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+display: flex; align-items: center; justify-content: space-between;
+padding: 1rem 3rem;
+background: #1c1c24;
+border-bottom: 3px solid var(–red);
+box-shadow: 0 2px 30px rgba(0,0,0,0.25);
+}
+
+.logo {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 2rem; letter-spacing: 3px; color: #ffffff;
+}
+.logo span { color: var(–red); }
+
+nav ul { list-style: none; display: flex; gap: 2.5rem; }
+nav ul a {
+color: rgba(255,255,255,0.55); text-decoration: none;
+font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+transition: color 0.2s; position: relative;
+}
+nav ul a:hover { color: #ffffff; }
+
+.nav-cta {
+background: var(–red) !important; color: white !important;
+padding: 0.55rem 1.5rem; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+font-weight: 800 !important; letter-spacing: 2px !important;
+transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(–accent) !important; }
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh;
+display: grid; grid-template-columns: 1fr 1fr;
+align-items: center; padding: 8rem 3rem 4rem; gap: 3rem;
+position: relative; overflow: hidden;
+background: #1a1a22;
+}
+
+.hero::before {
+content: ‘’;
+position: absolute; top: 0; right: 0;
+width: 0; height: 0;
+border-style: solid; border-width: 0 300px 300px 0;
+border-color: transparent var(–red) transparent transparent; opacity: 0.18;
+opacity: 0.12; pointer-events: none;
+}
+
+.hero-bg-art { display: none; }
+.hero-left { position: relative; z-index: 2; }
+
+.hero-label {
+display: inline-flex; align-items: center; gap: 0.6rem;
+font-size: 0.72rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+color: var(–red); margin-bottom: 1.5rem;
+border: 1px solid rgba(232,0,28,0.3); padding: 0.4rem 1rem;
+clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+background: rgba(232,0,28,0.08);
+}
+.hero-label::before {
+content: ‘’; width: 6px; height: 6px; background: var(–red); border-radius: 50%;
+animation: pulse 1.5s infinite;
+}
+
+.hero h1 {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: clamp(4rem, 8vw, 7.5rem);
+font-weight: 800; line-height: 0.9;
+text-transform: uppercase; letter-spacing: -1px;
+margin-bottom: 1.8rem;
+}
+.hero h1 em {
+font-style: italic; color: var(–red);
+-webkit-text-stroke: 0px;
+display: block;
+text-shadow: 0 0 40px rgba(232,0,28,0.5);
+}
+.hero h1 .outline-text {
+-webkit-text-stroke: 2px rgba(255,255,255,0.18);
+color: transparent; display: block;
+}
+
+.hero-desc {
+color: rgba(255,255,255,0.5); font-size: 1rem; line-height: 1.75;
+max-width: 440px; margin-bottom: 2.5rem;
+border-left: 3px solid var(–red); padding-left: 1rem;
+}
+
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+.btn-primary {
+background: var(–red); color: white;
+padding: 0.9rem 2.5rem; font-size: 0.82rem; font-weight: 700;
+letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+display: inline-block; transition: all 0.2s; position: relative; overflow: hidden;
+}
+.btn-primary::before {
+content: ‘’; position: absolute; inset: 0;
+background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+}
+.btn-primary:hover { background: var(–accent); box-shadow: 0 0 30px var(–red-glow); transform: translateY(-2px); }
+
+.btn-ghost {
+color: var(–muted); padding: 0.9rem 2.5rem; font-size: 0.82rem; font-weight: 600;
+letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+border: 1px solid rgba(255,255,255,0.2);
+clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+display: inline-block; transition: all 0.2s;
+}
+.btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+
+.hero-stats {
+display: flex; gap: 2.5rem;
+padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15);
+}
+.stat-num {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 2.8rem; font-weight: 800; line-height: 1; color: #ffffff;
+}
+.stat-num span { color: var(–red); }
+.stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; margin-top: 0.2rem; }
+
+/* ── HERO VISUAL (Sport arena art) ── */
+.hero-visual {
+position: relative; z-index: 2;
+display: flex; align-items: center; justify-content: center;
+}
+
+.arena-card {
+width: 100%; max-width: 500px;
+background: #ffffff;
+border: 1px solid rgba(0,0,0,0.1);
+border-radius: 2px; overflow: hidden;
+box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(232,0,28,0.2);
+position: relative;
+}
+
+.arena-header {
+background: var(–red);
+padding: 0.7rem 1.2rem;
+display: flex; align-items: center; justify-content: space-between;
+}
+.arena-header-title {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 1rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+}
+.arena-live {
+display: flex; align-items: center; gap: 0.4rem;
+font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
+}
+
+.arena-scoreboard {
+padding: 1.5rem;
+display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.team {
+display: flex; flex-direction: column; align-items: center; gap: 0.5rem; flex: 1;
+}
+.team-badge {
+width: 44px; height: 44px; border-radius: 50%;
+background: rgba(255,255,255,0.05);
+border: 1px solid rgba(255,255,255,0.1);
+display: flex; align-items: center; justify-content: center;
+font-size: 1.2rem;
+}
+.team-name { font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(–muted); }
+.score-box {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 3.5rem; font-weight: 800; letter-spacing: -2px;
+color: var(–text); text-align: center; line-height: 1;
+}
+.score-sep { color: var(–red); }
+.match-time { font-size: 0.72rem; color: var(–red); font-weight: 700; letter-spacing: 1px; text-align: center; margin-top: 0.3rem; }
+
+.channels-list {
+padding: 1rem 1.2rem;
+display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;
+}
+.ch-item {
+background: rgba(255,255,255,0.03);
+border: 1px solid rgba(255,255,255,0.05);
+border-radius: 3px; padding: 0.5rem;
+font-size: 0.62rem; font-weight: 700; letter-spacing: 1px;
+text-align: center; color: var(–muted);
+transition: all 0.2s;
+}
+.ch-item.on { border-color: var(–red); color: var(–text); background: rgba(232,0,28,0.1); }
+.ch-item:hover { color: var(–text); border-color: rgba(255,255,255,0.2); }
+
+.arena-footer-bar {
+background: rgba(255,255,255,0.02);
+padding: 0.8rem 1.2rem;
+display: flex; align-items: center; gap: 0.8rem;
+border-top: 1px solid rgba(255,255,255,0.05);
+}
+.ufc-badge {
+background: var(–red);
+font-size: 0.6rem; font-weight: 800; letter-spacing: 2px; padding: 0.25rem 0.6rem;
+clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+}
+.event-name { font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; }
+.event-time { margin-left: auto; font-size: 0.68rem; color: var(–muted); }
+
+.floating-badge {
+position: absolute;
+background: var(–red); color: white;
+font-size: 0.65rem; font-weight: 800; padding: 0.4rem 0.9rem; letter-spacing: 2px; text-transform: uppercase;
+clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+}
+.badge-top-right { top: -10px; right: 16px; animation: float 3s ease-in-out infinite; }
+.badge-bottom-left { bottom: 24px; left: -10px; background: var(–surface2); border: 1px solid var(–red); animation: float 3s 1.5s ease-in-out infinite; }
+
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* ── TICKER ── */
+.ticker {
+background: var(–red); padding: 0.65rem 0; overflow: hidden; white-space: nowrap;
+position: relative; z-index: 2;
+}
+.ticker::before, .ticker::after {
+content: ‘’; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 1;
+}
+.ticker::before { left: 0; background: linear-gradient(90deg, var(–red), transparent); }
+.ticker::after  { right: 0; background: linear-gradient(-90deg, var(–red), transparent); }
+.ticker-inner { display: inline-flex; gap: 2.5rem; animation: ticker 25s linear infinite; }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.ticker-item {
+font-size: 0.72rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase;
+display: flex; align-items: center; gap: 0.7rem;
+}
+.ticker-dot { font-size: 0.4rem; opacity: 0.6; }
+
+/* ── SECTIONS ── */
+.section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+
+.section-label {
+display: inline-flex; align-items: center; gap: 0.6rem;
+font-size: 0.7rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+color: var(–red); margin-bottom: 1rem;
+}
+.section-label::before { content: ‘’; width: 24px; height: 2px; background: var(–red); }
+
+.section-title {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: clamp(2.8rem, 5vw, 4.5rem);
+font-weight: 800; text-transform: uppercase; line-height: 0.95;
+margin-bottom: 1rem; letter-spacing: -0.5px; color: #111111;
+}
+.section-sub { color: var(–muted); font-size: 1rem; line-height: 1.7; max-width: 500px; margin-bottom: 3.5rem; }
+
+/* ── FEATURES ── */
+.features-grid {
+display: grid; grid-template-columns: repeat(3, 1fr);
+gap: 1.5rem;
+}
+.feature-card {
+background: #ffffff; padding: 2.5rem 2rem; position: relative; overflow: hidden;
+transition: all 0.3s; border: 1px solid rgba(0,0,0,0.07);
+box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.feature-card::before {
+content: ‘’; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+background: linear-gradient(90deg, var(–red), var(–accent));
+transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+}
+.feature-card::after {
+content: ‘’; position: absolute;
+bottom: -40px; right: -20px; width: 120px; height: 120px;
+background: radial-gradient(circle, rgba(232,0,28,0.06) 0%, transparent 70%);
+transition: opacity 0.3s;
+}
+.feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+.feature-card:hover::before { transform: scaleX(1); }
+
+.feature-icon { font-size: 2rem; margin-bottom: 1.2rem; display: block; }
+.feature-title {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 1.5rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+margin-bottom: 0.7rem; color: #111111;
+}
+.feature-desc { color: var(–muted); font-size: 0.88rem; line-height: 1.7; }
+
+/* ── PRICING ── */
+.pricing-section {
+padding: 6rem 3rem; position: relative; overflow: hidden;
+background: #1a1a22;
+}
+.pricing-section::before {
+content: ‘’; position: absolute;
+top: 0; left: 0; right: 0; height: 4px;
+background: var(–red);
+}
+.pricing-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+.pricing-header { text-align: center; margin-bottom: 4rem; }
+.pricing-header .section-title { color: #ffffff; }
+.pricing-header .section-label { color: var(–red); justify-content: center; }
+.pricing-header .section-sub { color: rgba(255,255,255,0.45); margin: 0 auto; text-align: center; }
+
+.plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: start; }
+
+.plan-card {
+background: #ffffff;
+border: 1px solid rgba(0,0,0,0.1);
+border-radius: 2px; padding: 2.5rem 2rem;
+position: relative; overflow: hidden;
+transition: transform 0.3s, border-color 0.3s;
+}
+.plan-card::before {
+content: ‘’; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+background: rgba(255,255,255,0.06);
+transition: background 0.3s;
+}
+.plan-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.15); }
+.plan-card.featured {
+border-color: var(–red) !important;
+border-width: 2px !important;
+background: linear-gradient(160deg, rgba(232,0,28,0.18) 0%, rgba(232,0,28,0.07) 50%, #ffffff 100%) !important;
+box-shadow: 0 12px 50px rgba(232,0,28,0.25), 0 0 0 2px var(–red) !important;
+}
+.plan-card.featured::before {
+background: linear-gradient(90deg, var(–red), var(–accent)) !important;
+height: 5px !important;
+}
+.plan-card.featured .plan-name { color: var(–red) !important; }
+.plan-card.featured .plan-price .amount { color: var(–red) !important; }
+.plan-card.featured .plan-price .currency { color: var(–red) !important; opacity: 0.7; }
+.plan-card.featured .plan-cta.outline {
+background: var(–red) !important;
+color: white !important;
+border-color: var(–red) !important;
+}
+
+.plan-badge {
+position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+background: var(–red); color: white;
+font-size: 0.62rem; font-weight: 800; padding: 0.3rem 1.2rem;
+letter-spacing: 2px; text-transform: uppercase;
+clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+}
+
+.plan-name {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 1.8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+margin-bottom: 0.3rem; color: #111111;
+}
+.plan-desc { font-size: 0.8rem; color: var(–muted); margin-bottom: 2rem; }
+
+.plan-price { margin-bottom: 2rem; display: flex; align-items: baseline; gap: 0.3rem; }
+.plan-price .currency { font-size: 1.2rem; color: var(–muted); font-weight: 300; }
+.plan-price .amount {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 4rem; font-weight: 800; line-height: 1; color: #111111;
+}
+.plan-price .period { font-size: 0.8rem; color: var(–muted); align-self: flex-end; margin-bottom: 0.4rem; }
+
+.plan-features { list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.plan-features li {
+font-size: 0.87rem; color: var(–muted);
+display: flex; align-items: center; gap: 0.7rem;
+}
+.plan-features li::before {
+content: ‘’; width: 16px; height: 16px; flex-shrink: 0;
+background: rgba(232,0,28,0.12);
+border: 1px solid rgba(232,0,28,0.4);
+border-radius: 2px;
+background-image: url(“data:image/svg+xml,%3Csvg width=‘10’ height=‘8’ viewBox=‘0 0 10 8’ fill=‘none’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cpath d=‘M1 4L3.5 6.5L9 1’ stroke=’%23E8001C’ stroke-width=‘1.5’ stroke-linecap=‘round’ stroke-linejoin=‘round’/%3E%3C/svg%3E”);
+background-repeat: no-repeat; background-position: center;
+}
+
+.plan-cta {
+display: block; text-align: center; padding: 0.9rem;
+font-size: 0.78rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+text-decoration: none; transition: all 0.2s;
+clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+.plan-cta.outline { border: 1px solid rgba(0,0,0,0.15); color: var(–muted); }
+.plan-cta.outline:hover { border-color: rgba(0,0,0,0.35); color: var(–text); }
+.plan-cta.solid { background: var(–red); color: white; }
+.plan-cta.solid:hover { background: var(–accent); box-shadow: 0 0 20px var(–red-glow); }
+
+/* ── COMPAT ── */
+.compat-section { padding: 5rem 3rem; max-width: 1100px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.compat-title {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 2.2rem; font-weight: 800; letter-spacing: 3px;
+text-transform: uppercase; color: var(–muted);
+}
+.devices-row { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 2.5rem; }
+.device { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; opacity: 0.45; transition: opacity 0.2s; }
+.device:hover { opacity: 1; }
+.device-icon { font-size: 2rem; }
+.device-name { font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(–muted); font-weight: 600; }
+
+/* ── FAQ ── */
+.faq-section { padding: 6rem 3rem; background: #ffffff; position: relative; z-index: 1; border-top: 4px solid var(–red); }
+.faq-inner { max-width: 760px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); padding: 1.5rem 0; cursor: pointer; }
+.faq-q { display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 0.95rem; gap: 1rem; color: #111111; }
+.faq-toggle { font-size: 1.2rem; color: var(–red); flex-shrink: 0; transition: transform 0.25s; }
+.faq-a { color: var(–muted); font-size: 0.88rem; line-height: 1.75; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, margin-top 0.25s; }
+.faq-item.open .faq-a { max-height: 200px; margin-top: 1rem; }
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+/* ── CTA BANNER ── */
+.cta-banner {
+padding: 7rem 3rem; text-align: center; position: relative; overflow: hidden;
+background: var(–red);
+}
+.cta-banner::before {
+content: ‘’; position: absolute; inset: 0;
+background: repeating-linear-gradient(45deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 28px);
+}
+.cta-banner h2 {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: clamp(3rem, 6vw, 6rem); font-weight: 800; text-transform: uppercase;
+margin-bottom: 1rem; position: relative; letter-spacing: -1px;
+line-height: 0.9; color: #ffffff;
+}
+.cta-banner h2 span { color: #0a0a0f; display: block; }
+.cta-banner p { color: rgba(255,255,255,0.75); margin-bottom: 2.5rem; font-size: 1rem; position: relative; }
+.cta-banner .btn-primary { position: relative; font-size: 0.95rem; padding: 1.1rem 3.5rem; background: #0a0a0f !important; }
+.cta-banner .btn-primary:hover { background: #222 !important; }
+
+/* ── FOOTER ── */
+footer {
+background: #1a1a22; border-top: 3px solid var(–red);
+padding: 3rem; display: flex; justify-content: space-between; align-items: center;
+flex-wrap: wrap; gap: 1.5rem; position: relative; z-index: 1;
+}
+.footer-logo { font-family: ‘Barlow Condensed’, sans-serif; font-size: 1.6rem; letter-spacing: 3px; color: #ffffff; }
+.footer-logo span { color: var(–red); }
+.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+.footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.78rem; font-weight: 500; transition: color 0.2s; }
+.footer-links a:hover { color: #ffffff; }
+footer p { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+.hero-left > * { animation: fadeUp 0.7s ease both; }
+.hero-left > *:nth-child(1){animation-delay:0.1s}
+.hero-left > *:nth-child(2){animation-delay:0.2s}
+.hero-left > *:nth-child(3){animation-delay:0.3s}
+.hero-left > *:nth-child(4){animation-delay:0.4s}
+.hero-left > *:nth-child(5){animation-delay:0.55s}
+.hero-visual { animation: fadeUp 0.9s 0.35s ease both; }
+
+/* ── SCOREBOARD ANIMATION ── */
+@keyframes scoreFlash { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+/* TV frame kept for compat */
+.tv-frame, .tv-stand, .tv-content, .channel-bar, .live-dot, .channel-name, .channel-info, .channel-grid, .ch-card { display: none; }
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+nav { padding: 1rem 1.5rem; }
+nav ul { display: none; }
+.hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; }
+.hero-visual { display: none; }
+.features-grid { grid-template-columns: 1fr; }
+.plans-grid { grid-template-columns: 1fr; }
+.section, .faq-section, .cta-banner { padding: 4rem 1.5rem; }
+footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+.pricing-section { padding: 4rem 1.5rem; }
+}
+</style>
+
+<script src="https://www.paypal.com/sdk/js?client-id=ATFZj6SjLGIayG_LSSBNnJmUALffdhx_LkJhp1n4vKNPLY2n_SE11HxjVQYSFebRzwtMSkBTdGnC9gdr&currency=EUR&intent=capture" data-sdk-integration-source="button-factory"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <div class="logo">Nueve<span>IPTV</span></div>
+  <ul>
+    <li><a href="#features">Fonctionnalités</a></li>
+    <li><a href="#pricing">Tarifs</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#pricing" class="nav-cta">Commander</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-label">IPTV Premium 4K — Sport & Entertainment</div>
+    <h1>
+      <span class="outline-text">Regardez</span>
+      chaque match,<br>
+      <em>chaque combat.</em>
+    </h1>
+    <p class="hero-desc">UCL, UFC, Ligue 1, NFL, NBA… Plus de 20 000 chaînes HD & 4K en direct. Le sport mondial dans votre salon, sans antenne, sans satellite.</p>
+    <div class="hero-btns">
+      <a href="#pricing" class="btn-primary">Commencer maintenant</a>
+      <a href="#features" class="btn-ghost">En savoir plus</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">20<span>K+</span></div>
+        <div class="stat-label">Chaînes live</div>
+      </div>
+      <div>
+        <div class="stat-num">80<span>K+</span></div>
+        <div class="stat-label">VOD & séries</div>
+      </div>
+      <div>
+        <div class="stat-num">99<span>%</span></div>
+        <div class="stat-label">Disponibilité</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div style="position:relative; width:100%;">
+      <div class="floating-badge badge-top-right">🏆 UCL LIVE</div>
+      <div class="floating-badge badge-bottom-left">🥊 UFC ON AIR</div>
+      <div class="arena-card">
+        <!-- Header -->
+        <div class="arena-header">
+          <div class="arena-header-title">⚽ Champions League — Live</div>
+          <div class="arena-live">
+            <div class="live-dot" style="display:block;width:7px;height:7px;background:white;border-radius:50%;animation:pulse 1.5s infinite;"></div>
+            EN DIRECT
+          </div>
+        </div>
+        <!-- Scoreboard -->
+        <div class="arena-scoreboard">
+          <div class="team">
+            <div class="team-badge">🔵</div>
+            <div class="team-name">Man City</div>
+          </div>
+          <div style="text-align:center;">
+            <div class="score-box">2 <span class="score-sep">—</span> 1</div>
+            <div class="match-time">⏱ 73'</div>
+          </div>
+          <div class="team">
+            <div class="team-badge">⚪</div>
+            <div class="team-name">Real Madrid</div>
+          </div>
+        </div>
+        <!-- Channel grid -->
+        <div class="channels-list">
+          <div class="ch-item on">beIN 1</div>
+          <div class="ch-item">RMC Sport</div>
+          <div class="ch-item">Canal+</div>
+          <div class="ch-item">ESPN</div>
+          <div class="ch-item on">Sky Sport</div>
+          <div class="ch-item">DAZN</div>
+          <div class="ch-item">BT Sport</div>
+          <div class="ch-item">Eurosport</div>
+          <div class="ch-item on">TNT Sport</div>
+        </div>
+        <!-- UFC Event bar -->
+        <div class="arena-footer-bar">
+          <div class="ufc-badge">UFC 305</div>
+          <div class="event-name">Adesanya vs Pereira III</div>
+          <div class="event-time">Sam. 22:00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">TF1 HD <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">CANAL+ <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">beIN Sports <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">RMC Sport <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">ESPN <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">HBO Max <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Sky Sport <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Eurosport <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">BBC One <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">RAI 1 <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Al Jazeera <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">TV5Monde <span class="ticker-dot">●</span></span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item">TF1 HD <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">CANAL+ <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">beIN Sports <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">RMC Sport <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">ESPN <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">HBO Max <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Sky Sport <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Eurosport <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">BBC One <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">RAI 1 <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Al Jazeera <span class="ticker-dot">●</span></span>
+    <span class="ticker-item">TV5Monde <span class="ticker-dot">●</span></span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+
+<section id="features" class="section">
+  <div class="section-label">Pourquoi nous choisir</div>
+  <h2 class="section-title">Tout ce dont vous<br>avez besoin.</h2>
+  <p class="section-sub">Une expérience de streaming premium, pensée pour ceux qui exigent le meilleur.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📡</div>
+      <div class="feature-title">20 000+ Chaînes</div>
+      <p class="feature-desc">France, Belgique, Canada, Maghreb, Moyen-Orient, UK, USA… Toutes les chaînes du monde entier en un seul endroit.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎬</div>
+      <div class="feature-title">VOD Illimité</div>
+      <p class="feature-desc">80 000+ films et séries, avec un catalogue mis à jour chaque semaine. Les dernières sorties dès leur disponibilité.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Ultra HD 4K</div>
+      <p class="feature-desc">Qualité maximale sur chaque chaîne compatible. Profitez de vos contenus avec une image et un son irréprochables.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔄</div>
+      <div class="feature-title">Anti-Freeze</div>
+      <p class="feature-desc">Serveurs multi-CDN avec basculement automatique. Plus de coupures pendant les matchs importants.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <div class="feature-title">Multi-Écrans</div>
+      <p class="feature-desc">Compatible TV, smartphone, tablette, PC et box Android. Regardez jusqu'à 2 écrans simultanément selon votre forfait.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🕐</div>
+      <div class="feature-title">Support 24/7</div>
+      <p class="feature-desc">Une équipe disponible à toute heure par chat ou ticket pour vous aider en cas de problème. Réponse sous 2h garantie.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+
+<section id="pricing" class="pricing-section">
+  <div class="pricing-inner">
+    <div class="pricing-header">
+      <div class="section-label" style="justify-content:center;">Nos offres</div>
+      <h2 class="section-title">Simple. Transparent.<br>Sans engagement.</h2>
+      <p class="section-sub" style="margin: 1rem auto 0; text-align:center;">Choisissez la durée qui vous convient. Paiement unique, activation immédiate.</p>
+    </div>
+    <div class="plans-grid">
+      <!-- STARTER -->
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-desc">Pour essayer sans risque</div>
+        <div class="plan-price">
+          <span class="currency">€</span>
+          <span class="amount">10</span>
+          <span class="period">/ 1 mois</span>
+        </div>
+        <ul class="plan-features">
+          <li>20 000+ chaînes</li>
+          <li>VOD illimité</li>
+          <li>Qualité 4K Ultra HD</li>
+          <li>1 connexion simultanée</li>
+          <li>Support 24/7</li>
+        </ul>
+        <a href="#" class="plan-cta outline" onclick="openCheckout('Starter', '10', '1 mois'); return false;">Choisir Starter</a>
+      </div>
+      <!-- PRO -->
+      <div class="plan-card">
+        <div class="plan-name">Pro</div>
+        <div class="plan-desc">Le meilleur rapport qualité/prix</div>
+        <div class="plan-price">
+          <span class="currency">€</span>
+          <span class="amount">25</span>
+          <span class="period">/ 3 mois</span>
+        </div>
+        <ul class="plan-features">
+          <li>20 000+ chaînes</li>
+          <li>VOD illimité</li>
+          <li>Qualité 4K Ultra HD</li>
+          <li>1 connexion simultanée</li>
+          <li>Support 24/7</li>
+        </ul>
+        <a href="#" class="plan-cta outline" onclick="openCheckout('Pro', '25', '3 mois'); return false;">Choisir Pro</a>
+      </div>
+      <!-- ULTIMATE (FEATURED) -->
+      <div class="plan-card featured">
+        <div class="plan-badge">⭐ Populaire</div>
+        <div class="plan-name">Ultimate</div>
+        <div class="plan-desc">Pour les vrais passionnés</div>
+        <div class="plan-price">
+          <span class="currency">€</span>
+          <span class="amount">50</span>
+          <span class="period">/ 12 mois</span>
+        </div>
+        <ul class="plan-features">
+          <li>20 000+ chaînes</li>
+          <li>VOD illimité</li>
+          <li>Qualité 4K Ultra HD</li>
+          <li>1 connexion simultanée</li>
+          <li>Support 24/7</li>
+        </ul>
+        <a href="#" class="plan-cta solid" onclick="openCheckout('Ultimate', '50', '12 mois'); return false;">Choisir Ultimate</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPATIBILITY -->
+
+<section class="compat-section">
+  <div class="section-label" style="justify-content:center; margin-bottom:0.5rem;">Compatible avec</div>
+  <div class="compat-title">TOUS VOS APPAREILS</div>
+  <div class="devices-row">
+    <div class="device"><div class="device-icon">📺</div><div class="device-name">Smart TV</div></div>
+    <div class="device"><div class="device-icon">📱</div><div class="device-name">iPhone</div></div>
+    <div class="device"><div class="device-icon">🤖</div><div class="device-name">Android</div></div>
+    <div class="device"><div class="device-icon">💻</div><div class="device-name">PC / Mac</div></div>
+    <div class="device"><div class="device-icon">📟</div><div class="device-name">Box Android</div></div>
+    <div class="device"><div class="device-icon">🎮</div><div class="device-name">Firestick</div></div>
+    <div class="device"><div class="device-icon">🖥️</div><div class="device-name">Chromecast</div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+
+<section id="faq" class="faq-section">
+  <div class="faq-inner">
+    <div class="section-label">Questions fréquentes</div>
+    <h2 class="section-title" style="margin-bottom:2.5rem;">FAQ</h2>
+
+```
+<div class="faq-item">
+  <div class="faq-q">Comment accéder à mon abonnement après l'achat ? <span class="faq-toggle">+</span></div>
+  <div class="faq-a">Après votre paiement, vous recevrez par email vos identifiants de connexion dans un délai de 24h maximum. Un guide d'installation est inclus pour vous aider à configurer votre application IPTV favorite.</div>
+</div>
+<div class="faq-item">
+  <div class="faq-q">Quelle vitesse internet est nécessaire ? <span class="faq-toggle">+</span></div>
+  <div class="faq-a">Pour la qualité HD, 10 Mbps suffisent. Pour la 4K, nous recommandons minimum 25 Mbps. La plupart des connexions fibre ou câble sont largement suffisantes.</div>
+</div>
+<div class="faq-item">
+  <div class="faq-q">Puis-je essayer avant d'acheter ? <span class="faq-toggle">+</span></div>
+  <div class="faq-a">Oui ! Contactez-nous via le chat pour obtenir un test gratuit de 24h. Aucune carte bancaire requise pour l'essai.</div>
+</div>
+<div class="faq-item">
+  <div class="faq-q">Quels modes de paiement acceptez-vous ? <span class="faq-toggle">+</span></div>
+  <div class="faq-a">Nous acceptons les paiements par carte bancaire (Visa, Mastercard), PayPal, cryptomonnaies (Bitcoin, USDT) et virement bancaire. Tous les paiements sont sécurisés.</div>
+</div>
+<div class="faq-item">
+  <div class="faq-q">Y a-t-il un engagement ou des frais cachés ? <span class="faq-toggle">+</span></div>
+  <div class="faq-a">Absolument aucun engagement. Vous payez une fois pour la durée choisie, c'est tout. Pas de renouvellement automatique, pas de surprise sur la facture.</div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- CTA -->
+
+<section class="cta-banner">
+  <h2>Prêt pour<br><span>le grand match ?</span></h2>
+  <p>Rejoignez des milliers de fans. Activation en moins de 24h.</p>
+  <a href="#pricing" class="btn-primary">Choisir mon forfait →</a>
+</section>
+
+<!-- CHECKOUT MODAL -->
+
+<div id="checkout-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:1000; align-items:center; justify-content:center; backdrop-filter:blur(6px);">
+  <div id="checkout-box" style="background:var(--surface); border:1px solid rgba(255,255,255,0.08); border-radius:8px; width:100%; max-width:520px; padding:2.5rem; position:relative; animation:fadeUp 0.3s ease;">
+
+```
+<!-- Close -->
+<button onclick="closeCheckout()" style="position:absolute;top:1.2rem;right:1.2rem;background:none;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer;line-height:1;">×</button>
+
+<!-- Header -->
+<div style="margin-bottom:2rem;">
+  <div style="font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem;">Finaliser la commande</div>
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:1px;" id="modal-title">Forfait Pro — 24€</div>
+  <div style="font-size:0.82rem;color:var(--muted);margin-top:0.25rem;" id="modal-sub">Durée : 3 mois · Activation sous 24h</div>
+</div>
+
+<!-- Step 1: Email -->
+<div id="step-email">
+  <label style="font-size:0.8rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:0.5rem;">Votre adresse email</label>
+  <input id="input-email" type="email" placeholder="exemple@email.com" style="width:100%;padding:0.85rem 1rem;background:var(--bg);border:1px solid rgba(255,255,255,0.1);border-radius:3px;color:var(--text);font-size:0.95rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+  <button onclick="goToPayment()" style="width:100%;margin-top:1rem;padding:0.9rem;background:var(--red);color:white;border:none;border-radius:3px;font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--red-dark)'" onmouseout="this.style.background='var(--red)'">Continuer →</button>
+</div>
+
+<!-- Step 2: Payment method -->
+<div id="step-payment" style="display:none;">
+  <div style="font-size:0.8rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem;">Choisir le mode de paiement</div>
+  
+  <!-- Payment tabs -->
+  <div style="display:flex;gap:0.5rem;margin-bottom:1.8rem;">
+    <button class="pay-tab active" onclick="selectTab('card')" id="tab-card" style="flex:1;padding:0.7rem;background:rgba(232,0,28,0.12);border:1px solid var(--red);border-radius:3px;color:var(--text);font-size:0.78rem;font-weight:600;letter-spacing:1px;cursor:pointer;transition:all 0.2s;">💳 Carte</button>
+    <button class="pay-tab" onclick="selectTab('paypal')" id="tab-paypal" style="flex:1;padding:0.7rem;background:var(--bg);border:1px solid rgba(255,255,255,0.1);border-radius:3px;color:var(--muted);font-size:0.78rem;font-weight:600;letter-spacing:1px;cursor:pointer;transition:all 0.2s;">🅿️ PayPal</button>
+    <button class="pay-tab" onclick="selectTab('crypto')" id="tab-crypto" style="flex:1;padding:0.7rem;background:var(--bg);border:1px solid rgba(255,255,255,0.1);border-radius:3px;color:var(--muted);font-size:0.78rem;font-weight:600;letter-spacing:1px;cursor:pointer;transition:all 0.2s;">₿ Crypto</button>
+  </div>
+
+  <!-- CARD FORM (Stripe) -->
+  <div id="panel-card">
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:1.2rem;margin-bottom:1rem;">
+      <div style="font-size:0.72rem;color:var(--muted);letter-spacing:1px;margin-bottom:0.8rem;text-transform:uppercase;">Numéro de carte</div>
+      <input type="text" placeholder="4242 4242 4242 4242" maxlength="19" oninput="formatCard(this)" style="width:100%;background:none;border:none;color:var(--text);font-size:1.05rem;font-family:'DM Sans',sans-serif;outline:none;letter-spacing:2px;">
+      <div style="display:flex;gap:1rem;margin-top:1rem;">
+        <div style="flex:1;">
+          <div style="font-size:0.72rem;color:var(--muted);letter-spacing:1px;margin-bottom:0.4rem;text-transform:uppercase;">Expiration</div>
+          <input type="text" placeholder="MM / AA" maxlength="7" oninput="formatExpiry(this)" style="width:100%;background:none;border:none;color:var(--text);font-size:0.95rem;font-family:'DM Sans',sans-serif;outline:none;">
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:0.72rem;color:var(--muted);letter-spacing:1px;margin-bottom:0.4rem;text-transform:uppercase;">CVV</div>
+          <input type="text" placeholder="•••" maxlength="4" style="width:100%;background:none;border:none;color:var(--text);font-size:0.95rem;font-family:'DM Sans',sans-serif;outline:none;">
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1.2rem;">
+      <div style="width:16px;height:16px;background:rgba(255,255,255,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.6rem;">🔒</div>
+      <span style="font-size:0.75rem;color:var(--muted);">Paiement sécurisé par <strong style="color:var(--text);">Stripe</strong> — Chiffrement SSL 256-bit</span>
+    </div>
+    <button onclick="simulatePay()" style="width:100%;padding:1rem;background:var(--red);color:white;border:none;border-radius:3px;font-size:0.88rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;" id="pay-btn-card">Payer <span id="pay-amount-card">24€</span> par carte</button>
+    <div style="text-align:center;margin-top:0.8rem;display:flex;gap:0.5rem;justify-content:center;opacity:0.5;">
+      <span style="font-size:1.2rem;">💳</span><span style="font-size:1.2rem;">🏦</span><span style="font-size:0.7rem;align-self:center;letter-spacing:1px;color:var(--muted);">VISA · MASTERCARD · AMEX</span>
+    </div>
+  </div>
+
+  <!-- PAYPAL -->
+  <div id="panel-paypal" style="display:none;">
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:1.2rem;margin-bottom:1rem;">
+      <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:1rem;">
+        <span style="font-size:1.4rem;">🅿️</span>
+        <span style="font-weight:700;font-size:0.95rem;">Paiement sécurisé PayPal</span>
+        <span style="margin-left:auto;font-size:0.72rem;color:var(--muted);">Sandbox</span>
+      </div>
+      <div id="paypal-button-container"></div>
+      <div id="paypal-loading" style="text-align:center;padding:1rem;color:var(--muted);font-size:0.85rem;">Chargement PayPal…</div>
+    </div>
+    <p style="text-align:center;font-size:0.73rem;color:var(--muted);margin-top:0.5rem;">🔒 Vos informations bancaires ne nous sont jamais communiquées</p>
+  </div>
+
+  <!-- CRYPTO -->
+  <div id="panel-crypto" style="display:none;">
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:1.5rem;margin-bottom:1rem;">
+      <div style="font-size:0.78rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem;">Choisir la cryptomonnaie</div>
+      <div style="display:flex;flex-direction:column;gap:0.6rem;">
+        <label style="display:flex;align-items:center;gap:0.8rem;padding:0.8rem;border:1px solid rgba(255,255,255,0.07);border-radius:3px;cursor:pointer;" onclick="selectCrypto(this,'BTC')">
+          <input type="radio" name="crypto" style="accent-color:var(--red);">
+          <span style="font-size:1.3rem;">₿</span>
+          <span style="font-weight:600;">Bitcoin (BTC)</span>
+          <span style="margin-left:auto;font-size:0.8rem;color:var(--muted);" id="price-btc">≈ 0.00028 BTC</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:0.8rem;padding:0.8rem;border:1px solid rgba(255,255,255,0.07);border-radius:3px;cursor:pointer;" onclick="selectCrypto(this,'ETH')">
+          <input type="radio" name="crypto" style="accent-color:var(--red);">
+          <span style="font-size:1.3rem;">⟠</span>
+          <span style="font-weight:600;">Ethereum (ETH)</span>
+          <span style="margin-left:auto;font-size:0.8rem;color:var(--muted);" id="price-eth">≈ 0.0072 ETH</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:0.8rem;padding:0.8rem;border:1px solid rgba(255,255,255,0.07);border-radius:3px;cursor:pointer;" onclick="selectCrypto(this,'USDT')">
+          <input type="radio" name="crypto" style="accent-color:var(--red);">
+          <span style="font-size:1.3rem;">₮</span>
+          <span style="font-weight:600;">Tether (USDT)</span>
+          <span style="margin-left:auto;font-size:0.8rem;color:var(--muted);" id="price-usdt">≈ 26 USDT</span>
+        </label>
+      </div>
+    </div>
+    <button onclick="simulatePay()" style="width:100%;padding:1rem;background:linear-gradient(135deg,#f7931a,#e8a020);color:white;border:none;border-radius:3px;font-size:0.88rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;">Générer l'adresse de paiement</button>
+    <p style="text-align:center;font-size:0.73rem;color:var(--muted);margin-top:0.8rem;">Paiement via CoinPayments · Confirmation en ~10 min</p>
+  </div>
+</div>
+
+<!-- Step 3: Success -->
+<div id="step-success" style="display:none;text-align:center;padding:1rem 0;">
+  <div style="font-size:3.5rem;margin-bottom:1rem;animation:fadeUp 0.5s ease;">✅</div>
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:2px;margin-bottom:0.8rem;">Commande confirmée !</div>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.7;">Vos identifiants de connexion vous seront envoyés par email dans les <strong style="color:var(--text);">24 prochaines heures</strong>.<br>Vérifiez aussi vos spams.</p>
+  <div style="margin-top:1.2rem;background:var(--bg);border:1px solid rgba(255,255,255,0.07);border-radius:3px;padding:0.8rem 1.5rem;display:inline-block;">
+    <span style="font-size:0.7rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;">N° de commande</span><br>
+    <span id="success-order-id" style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:2px;color:var(--gold);">—</span>
+  </div>
+  <br>
+  <button onclick="closeCheckout()" style="margin-top:2rem;padding:0.85rem 2rem;background:var(--red);color:white;border:none;border-radius:3px;font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;">Fermer</button>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- ADMIN PANEL MODAL -->
+
+<div id="admin-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:1001;align-items:flex-start;justify-content:center;overflow-y:auto;backdrop-filter:blur(6px);padding:2rem 1rem;">
+  <div style="background:var(--surface);border:1px solid rgba(255,255,255,0.08);border-radius:8px;width:100%;max-width:1000px;padding:2.5rem;position:relative;margin:auto;">
+    <button onclick="closeAdmin()" style="position:absolute;top:1.2rem;right:1.2rem;background:none;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer;">×</button>
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:2rem;">
+      <div>
+        <div style="font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:0.3rem;">Administration</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:2px;">Tableau de bord Nueve IPTV</div>
+      </div>
+    </div>
+    <div id="admin-content"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-logo">Nueve<span>IPTV</span></div>
+  <div class="footer-links">
+    <a href="#">Conditions d'utilisation</a>
+    <a href="#">Politique de confidentialité</a>
+    <a href="#">Contact</a>
+    <a href="#">Mentions légales</a>
+    <a href="#" onclick="openAdmin(); return false;" style="color:var(--red) !important;">🔐 Admin</a>
+  </div>
+  <p>© 2026 Nueve IPTV. Tous droits réservés.</p>
+</footer>
+
+<script>
+  // ─── CONFIG — À REMPLIR ───────────────────────────────────────────────
+  const EMAILJS_PUBLIC_KEY  = 'UwqV5H9xKo2V5tsR7';
+  const EMAILJS_SERVICE_ID  = 'service_y9axywg';
+  const EMAILJS_TEMPLATE_CLIENT  = 'template_qbglric';
+  const EMAILJS_TEMPLATE_ADMIN   = 'template_j55k429';
+  const ADMIN_EMAIL = 'Abdelkader.belzouz96@gmail.com';            // Votre email pour recevoir les commandes
+  const ADMIN_PASSWORD = 'nueve2026';               // Mot de passe tableau de bord
+  // ─────────────────────────────────────────────────────────────────────
+
+  // Init EmailJS
+  (function() {
+    if (typeof emailjs !== 'undefined') emailjs.init(EMAILJS_PUBLIC_KEY);
+  })();
+
+  // ─── STOCKAGE COMMANDES (localStorage) ───────────────────────────────
+  function getOrders() {
+    try { return JSON.parse(localStorage.getItem('nueve_orders') || '[]'); } catch { return []; }
+  }
+  function saveOrder(order) {
+    const orders = getOrders();
+    order.id = 'CMD-' + Date.now();
+    order.date = new Date().toISOString();
+    order.status = 'Payé';
+    orders.unshift(order);
+    localStorage.setItem('nueve_orders', JSON.stringify(orders));
+    return order;
+  }
+
+  // ─── EMAIL ────────────────────────────────────────────────────────────
+  async function sendEmails(order) {
+    if (typeof emailjs === 'undefined') { console.warn('EmailJS non chargé'); return; }
+    const params = {
+      client_email: order.email,
+      admin_email:  ADMIN_EMAIL,
+      plan_name:    order.plan,
+      plan_period:  order.period,
+      plan_price:   order.price + '€',
+      order_id:     order.id,
+      order_date:   new Date(order.date).toLocaleDateString('fr-FR'),
+      payment_method: order.method
+    };
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CLIENT, params);
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ADMIN,  params);
+    } catch(e) { console.error('EmailJS error:', e); }
+  }
+
+  // ─── CHECKOUT ────────────────────────────────────────────────────────
+  let currentPlan = {};
+
+  function openCheckout(name, price, period) {
+    currentPlan = { name, price, period };
+    document.getElementById('modal-title').textContent = `Forfait ${name} — ${price}€`;
+    document.getElementById('modal-sub').textContent = `Durée : ${period} · Activation sous 24h`;
+    document.getElementById('pay-amount-card').textContent = price + '€';
+    document.getElementById('price-btc').textContent = `≈ ${(price/86000).toFixed(6)} BTC`;
+    document.getElementById('price-eth').textContent = `≈ ${(price/3350).toFixed(4)} ETH`;
+    document.getElementById('price-usdt').textContent = `≈ ${Math.round(price*1.08)} USDT`;
+    document.getElementById('step-email').style.display = '';
+    document.getElementById('step-payment').style.display = 'none';
+    document.getElementById('step-success').style.display = 'none';
+    document.getElementById('input-email').value = '';
+    paypalRendered = false;
+    const overlay = document.getElementById('checkout-overlay');
+    overlay.style.display = 'flex';
+    setTimeout(() => overlay.style.opacity = '1', 10);
+  }
+
+  function closeCheckout() {
+    document.getElementById('checkout-overlay').style.display = 'none';
+  }
+
+  function goToPayment() {
+    const email = document.getElementById('input-email').value;
+    if (!email || !email.includes('@')) {
+      document.getElementById('input-email').style.borderColor = 'var(--red)';
+      document.getElementById('input-email').placeholder = '⚠ Email invalide';
+      return;
+    }
+    currentPlan.email = email;
+    document.getElementById('step-email').style.display = 'none';
+    document.getElementById('step-payment').style.display = '';
+    selectTab('card');
+  }
+
+  async function onPaymentSuccess(method) {
+    const order = saveOrder({ ...currentPlan, method });
+    await sendEmails(order);
+    document.getElementById('step-payment').style.display = 'none';
+    document.getElementById('step-success').style.display = '';
+    document.getElementById('success-order-id').textContent = order.id;
+  }
+
+  async function simulatePay() {
+    await onPaymentSuccess('Carte bancaire');
+  }
+
+  // ─── PAYPAL ───────────────────────────────────────────────────────────
+  let paypalRendered = false;
+
+  function renderPayPalButtons(price) {
+    const container = document.getElementById('paypal-button-container');
+    const loading   = document.getElementById('paypal-loading');
+    container.innerHTML = '';
+    paypalRendered = false;
+    if (typeof paypal === 'undefined') {
+      if (loading) loading.textContent = '⚠ SDK PayPal non chargé.';
+      return;
+    }
+    if (loading) loading.style.display = 'none';
+    paypal.Buttons({
+      style: { layout: 'vertical', color: 'blue', shape: 'rect', label: 'pay', height: 45 },
+      createOrder: (data, actions) => actions.order.create({
+        purchase_units: [{ description: `Nueve IPTV — Forfait ${currentPlan.name} (${currentPlan.period})`, amount: { currency_code: 'EUR', value: price.toString() } }]
+      }),
+      onApprove: (data, actions) => actions.order.capture().then(() => onPaymentSuccess('PayPal')),
+      onError: (err) => { container.innerHTML = '<p style="color:var(--red);font-size:0.82rem;text-align:center;padding:0.5rem;">❌ Erreur. Réessayez.</p>'; console.error(err); },
+      onCancel: () => { container.innerHTML = '<p style="color:var(--muted);font-size:0.82rem;text-align:center;">Annulé.</p>'; setTimeout(() => renderPayPalButtons(price), 2000); }
+    }).render('#paypal-button-container');
+    paypalRendered = true;
+  }
+
+  function selectTab(tab) {
+    ['card','paypal','crypto'].forEach(t => {
+      const btn   = document.getElementById('tab-' + t);
+      const panel = document.getElementById('panel-' + t);
+      if (t === tab) {
+        btn.style.background   = 'rgba(232,0,28,0.12)';
+        btn.style.borderColor  = 'var(--red)';
+        btn.style.color        = 'var(--text)';
+        panel.style.display    = '';
+      } else {
+        btn.style.background   = 'var(--bg)';
+        btn.style.borderColor  = 'rgba(255,255,255,0.1)';
+        btn.style.color        = 'var(--muted)';
+        panel.style.display    = 'none';
+      }
+    });
+    if (tab === 'paypal' && !paypalRendered) renderPayPalButtons(currentPlan.price);
+  }
+
+  function selectCrypto(label, coin) {
+    document.querySelectorAll('#panel-crypto label').forEach(l => l.style.borderColor = 'rgba(255,255,255,0.07)');
+    label.style.borderColor = 'var(--red)';
+    label.querySelector('input').checked = true;
+  }
+
+  document.getElementById('checkout-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeCheckout();
+  });
+
+  function formatCard(input) {
+    let v = input.value.replace(/\D/g,'').substring(0,16);
+    input.value = v.replace(/(.{4})/g,'$1 ').trim();
+  }
+  function formatExpiry(input) {
+    let v = input.value.replace(/\D/g,'').substring(0,4);
+    if (v.length >= 2) v = v.substring(0,2) + ' / ' + v.substring(2);
+    input.value = v;
+  }
+
+  // ─── ADMIN PANEL ──────────────────────────────────────────────────────
+  function openAdmin() {
+    const pwd = prompt('🔐 Mot de passe administrateur :');
+    if (pwd !== ADMIN_PASSWORD) { alert('❌ Mot de passe incorrect.'); return; }
+    renderAdminPanel();
+    document.getElementById('admin-overlay').style.display = 'flex';
+  }
+
+  function closeAdmin() {
+    document.getElementById('admin-overlay').style.display = 'none';
+  }
+
+  function renderAdminPanel() {
+    const orders = getOrders();
+    const total  = orders.reduce((s, o) => s + parseFloat(o.price), 0).toFixed(2);
+    const panel  = document.getElementById('admin-content');
+
+    const rows = orders.length === 0
+      ? '<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--muted);">Aucune commande pour l\'instant.</td></tr>'
+      : orders.map(o => `
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:0.8rem 0.6rem;font-size:0.78rem;color:var(--muted);">${o.id}</td>
+            <td style="padding:0.8rem 0.6rem;font-size:0.82rem;">${o.email}</td>
+            <td style="padding:0.8rem 0.6rem;font-size:0.82rem;font-weight:600;">${o.plan}</td>
+            <td style="padding:0.8rem 0.6rem;font-size:0.82rem;">${o.period}</td>
+            <td style="padding:0.8rem 0.6rem;font-size:0.82rem;color:var(--gold);font-weight:700;">${o.price}€</td>
+            <td style="padding:0.8rem 0.6rem;font-size:0.75rem;color:var(--muted);">${new Date(o.date).toLocaleString('fr-FR')}</td>
+            <td style="padding:0.8rem 0.6rem;font-size:0.75rem;">${o.method}</td>
+            <td style="padding:0.8rem 0.6rem;"><span style="background:rgba(0,200,100,0.15);color:#00c864;font-size:0.7rem;padding:0.2rem 0.6rem;border-radius:2px;font-weight:700;">${o.status}</span></td>
+          </tr>`).join('');
+
+    panel.innerHTML = `
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;">
+        <div style="background:var(--bg);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:1.5rem;">
+          <div style="font-size:0.7rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:0.5rem;">Commandes totales</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--text);">${orders.length}</div>
+        </div>
+        <div style="background:var(--bg);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:1.5rem;">
+          <div style="font-size:0.7rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:0.5rem;">Chiffre d'affaires</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);">${total}€</div>
+        </div>
+        <div style="background:var(--bg);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:1.5rem;">
+          <div style="font-size:0.7rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:0.5rem;">Dernière vente</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--text);">${orders.length ? new Date(orders[0].date).toLocaleDateString('fr-FR') : '—'}</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:2px;">Historique des commandes</div>
+        <button onclick="exportCSV()" style="background:var(--bg);border:1px solid rgba(255,255,255,0.1);color:var(--muted);padding:0.5rem 1rem;border-radius:3px;font-size:0.75rem;cursor:pointer;letter-spacing:1px;text-transform:uppercase;">⬇ Exporter CSV</button>
+      </div>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;">
+          <thead>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+              <th style="text-align:left;padding:0.6rem;font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">ID</th>
+              <th style="text-align:left;padding:0.6rem;font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Email</th>
+              <th style="text-align:left;padding:0.6rem;font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Forfait</th>
+              <th style="text-align:left;padding:0.6rem;font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Durée</th>
+              <th style="text-align:left;padding:0.6rem;font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Montant</th>
+              <th style="text-align:left;padding:0.6rem;font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Date</th>
+              <th style="text-align:left;padding:0.6rem;font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Paiement</th>
+              <th style="text-align:left;padding:0.6rem;font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Statut</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>`;
+  }
+
+  function exportCSV() {
+    const orders = getOrders();
+    if (!orders.length) { alert('Aucune commande à exporter.'); return; }
+    const header = 'ID,Email,Forfait,Durée,Montant,Date,Paiement,Statut\n';
+    const rows   = orders.map(o => `${o.id},${o.email},${o.plan},${o.period},${o.price}€,${new Date(o.date).toLocaleString('fr-FR')},${o.method},${o.status}`).join('\n');
+    const blob   = new Blob([header + rows], { type: 'text/csv;charset=utf-8;' });
+    const url    = URL.createObjectURL(blob);
+    const a      = document.createElement('a'); a.href = url; a.download = 'commandes-nueve-iptv.csv'; a.click();
+  }
+
+  // ─── FAQ ──────────────────────────────────────────────────────────────
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // ─── NAV SCROLL ───────────────────────────────────────────────────────
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav ul a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = '';
+      if (a.getAttribute('href') === `#${current}`) a.style.color = 'var(--text)';
+    });
+  });
+</script>
+
+</body>
+</html>
